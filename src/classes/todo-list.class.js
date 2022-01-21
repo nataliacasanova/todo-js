@@ -9,7 +9,14 @@ export class TodoList {
 
   deleteTodo(id) {}
 
-  toggleCheked(id) {}
+  toggleCheked(id) {
+    this.todos = this.todos.map((item) => {
+      if (item.id == id) {
+        item.completed = !item.completed;
+      }
+      return item;
+    });
+  }
 
   deleteAllCheked() {}
 }

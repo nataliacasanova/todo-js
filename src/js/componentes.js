@@ -1,5 +1,5 @@
 import { Todo } from "../classes";
-import { todoList } from '../index';
+import { todoList } from "../index";
 
 const divTodoList = document.querySelector(".todo-list");
 const txtInput = document.querySelector(".new-todo");
@@ -31,6 +31,17 @@ txtInput.addEventListener("keyup", (event) => {
 
     todoList.addTodo(newTodo);
     crearTodoHtml(newTodo);
-    txtInput.value = '';
+    txtInput.value = "";
+  }
+});
+
+divTodoList.addEventListener("click", (event) => {
+  const nameElement = event.target.localName; //saber el elemento concreto en el que he hecho click
+  const todoElement = event.target.parentElement.parentElement;
+  const todoId = todoElement.getAttribute("data-id");
+
+  if (nameElement.includes("input")) {
+    todoList.toggleCheked(todoId);
+    todoElement.classList.toggle("completed");
   }
 });
