@@ -7,7 +7,9 @@ export class TodoList {
     this.todos.push(todo);
   }
 
-  deleteTodo(id) {}
+  deleteTodo(id) {
+    this.todos = this.todos.filter((item) => item.id != id);
+  }
 
   toggleCheked(id) {
     this.todos = this.todos.map((item) => {
@@ -18,5 +20,8 @@ export class TodoList {
     });
   }
 
-  deleteAllCheked() {}
+  deleteAllCheked() {
+    this.todos = this.todos.filter((item) => !item.completed);
+   
+  }
 }
